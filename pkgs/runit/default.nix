@@ -34,8 +34,8 @@ stdenv.mkDerivation rec {
     cd src
 
     # Both of these are originally hard-coded to gcc
-    echo ${stdenv.cc.targetPrefix}cc > conf-cc
-    echo ${stdenv.cc.targetPrefix}cc > conf-ld
+    echo cc > conf-cc
+    echo cc > conf-ld
   '';
 
   installPhase = ''
