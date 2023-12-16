@@ -28,8 +28,6 @@ stdenv.mkDerivation rec {
     # usernamespace sandbox of nix seems to conflict with runit's assumptions
     # about unix users. Therefor skip the check
     sed -i '/.\/chkshsgr/d' src/Makefile
-  '' + lib.optionalString (!static) ''
-    sed -i 's,-static,,g' src/Makefile
   '';
 
   preBuild = ''
@@ -37,7 +35,7 @@ stdenv.mkDerivation rec {
 
     # Both of these are originally hard-coded to gcc
     echo ${stdenv.cc.targetPrefix}cc > conf-cc
-    echo ${stdenv.cc.targetPrefix}cc ${lib.optionalString stdenv.isDarwin "-Xlinker -x "}> conf-ld
+    echo ${stdenv.cc.targetPrefix}cc > conf-ld
   '';
 
   installPhase = ''
