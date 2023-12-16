@@ -108,6 +108,8 @@ let
     gnuxorriso = callPackage ./live-cd/gnuxorriso.nix {
       linux-headers = _bootstrap.early-linux-headers;
     };
+
+    runit = callPackage ./runit {};
   };
 
 in pkgs
